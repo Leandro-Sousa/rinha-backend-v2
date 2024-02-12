@@ -11,6 +11,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -O3")
 include_directories(include ${PROJECT_SOURCE_DIR})
 
 add_executable(${PROJECT_NAME} 
+               src/common/file_utils.cpp
                src/common/result.cpp
                src/models/account_statement.cpp
                src/models/balance.cpp

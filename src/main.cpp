@@ -1,27 +1,21 @@
 #include <iostream>
-#include <fstream>
 #include <memory>
 #include <drogon/drogon.h>
 #include <Poco/Data/SessionPool.h>
 #include <Poco/Data/SQLite/Connector.h>
 
+#include <src/common/file_utils.cpp>
 #include <src/repositories/balance_repository.cpp>
 #include <src/repositories/transaction_repository.cpp>
 #include <src/services/checking_account_service.cpp>
 #include <src/controllers/customers_controller.cpp>
 
-std::string getDatabaseInitContent(const std::string& databaseInitScriptPath)
+void initDatabase(const std::shared_ptr<Poco::Data::SessionPool> &sessionPool)
 {
-	std::ifstream ifs(databaseInitScriptPath);
-	char c;
-	std::string content;
-
-	while(ifs.get(c))
-	{
-		content += c;
-	}
-
-	return content;
+	auto databaseInitScriptPath = std::getenv("DATABASE_INIT_SCRIPT_PATH");
+	auto content = FileUtils::readAllText(databaseInitScriptPath);
+	auto session = sessionPool->get();
+	session << content, Poco::Data::Keywords::now;
 }
 
 int main(int argc, char *argv[])
@@ -35,10 +29,7 @@ int main(int argc, char *argv[])
 		64
 	);
 
-	// Refactor
-	auto content = getDatabaseInitContent(std::getenv("DATABASE_INIT_SCRIPT_PATH"));
-	auto session = sessionPool->get();
-	session << content, Poco::Data::Keywords::now;
+	initDatabase(sessionPool);
 
 	BalanceRepository balanceRepository(sessionPool);
 	TransactionRepository transactionRepository(sessionPool);

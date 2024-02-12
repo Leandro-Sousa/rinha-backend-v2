@@ -1,0 +1,3 @@
+/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles/rinha-backend.dir
+/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles/edit_cache.dir
+/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles/rebuild_cache.dir

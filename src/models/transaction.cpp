@@ -14,5 +14,4 @@ struct Transaction
     Poco::Timestamp createdAt;
 };
 
-using TransactionPtr = std::shared_ptr<Transaction>;
-using TransactionListPtr = std::shared_ptr<std::vector<Transaction>>;
+using TransactionList = std::vector<Transaction>;

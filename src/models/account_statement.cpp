@@ -9,7 +9,5 @@
 struct AccountStatement
 {
     Balance balance;
-    TransactionListPtr latestTransactions;
+    TransactionList latestTransactions;
 };
-
-using AccountStatementPtr = std::shared_ptr<AccountStatement>;

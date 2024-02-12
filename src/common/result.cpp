@@ -8,7 +8,7 @@ template<typename T>
 class Result
 {
     public:
-        Result(const Result& result): _data(std::move(result._data)), _failMessage(result._failMessage), _failCode(result._failCode)
+        Result(const Result& result): _data(result._data), _failMessage(result._failMessage), _failCode(result._failCode)
         {
         }
 
@@ -37,9 +37,9 @@ class Result
             return this->_failMessage.has_value();
         }
 
-        constexpr T&& getData() 
+        const T& getData() 
         {
-            return std::move(this->_data);
+            return this->_data.value();
         }
 
         std::string getFailMessage() const
@@ -53,11 +53,11 @@ class Result
         }
 
     private:
-        T _data;
+        std::optional<T> _data;
         std::optional<std::string> _failMessage;
         std::optional<std::int32_t> _failCode;
 
-        Result(const T& data): _data(std::move(data)), _failMessage(std::nullopt), _failCode(std::nullopt)
+        Result(const T& data): _data(data), _failMessage(std::nullopt), _failCode(std::nullopt)
         {
         }
 

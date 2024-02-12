@@ -21,7 +21,6 @@ public:
 
     void newTransaction(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::int32_t &id) const
     {
-        drogon::HttpResponsePtr response = nullptr;
         static auto transactionBodyValidator = TransactionBodyValidator();
         auto body = req->jsonObject();
         auto validationResult = transactionBodyValidator.validate(body);
@@ -33,56 +32,57 @@ public:
             {
                 auto balance = result.getData();
                 auto balanceJson = this->balanceToJson(balance);
-                response = drogon::HttpResponse::newHttpJsonResponse(balanceJson);
+                auto response = drogon::HttpResponse::newHttpJsonResponse(balanceJson);
                 response->setStatusCode(drogon::HttpStatusCode::k200OK);
+                callback(response);
             }
             else
             {
-                response = drogon::HttpResponse::newHttpResponse();
+                auto response = drogon::HttpResponse::newHttpResponse();
                 switch (result.getFailCode())
                 {
-                    case TransactionErrors::BALANCE_NOT_FOUND:
-                        response->setStatusCode(drogon::HttpStatusCode::k404NotFound);
-                        response->setBody(result.getFailMessage());
-                        break;
+                case TransactionErrors::BALANCE_NOT_FOUND:
+                    response->setStatusCode(drogon::HttpStatusCode::k404NotFound);
+                    response->setBody(result.getFailMessage());
+                    break;
 
-                    case TransactionErrors::INSUFFICIENT_FUNDS:
-                        response->setStatusCode(drogon::HttpStatusCode::k422UnprocessableEntity);
-                        response->setBody(result.getFailMessage());
-                        break;
+                case TransactionErrors::INSUFFICIENT_FUNDS:
+                    response->setStatusCode(drogon::HttpStatusCode::k422UnprocessableEntity);
+                    response->setBody(result.getFailMessage());
+                    break;
 
-                    default:
-                        response->setStatusCode(drogon::HttpStatusCode::k400BadRequest);
-                        break;
+                default:
+                    response->setStatusCode(drogon::HttpStatusCode::k400BadRequest);
+                    break;
                 }
+                callback(response);
             }
         }
         else
         {
-            response = drogon::HttpResponse::newHttpResponse();
+            auto response = drogon::HttpResponse::newHttpResponse();
             response->setStatusCode(drogon::HttpStatusCode::k422UnprocessableEntity);
             response->setBody(validationResult.getErrorMessage());
+            callback(response);
         }
-
-        callback(response);
     }
 
     void getStatement(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::int32_t &id) const
     {
-        drogon::HttpResponsePtr response;
         auto accountStatementOption = this->_checkingAccountService.getAccountStatement(id);
         if (accountStatementOption.has_value())
         {
             auto accountStatementJson = this->accountStatementToJson(accountStatementOption.value());
-            response = drogon::HttpResponse::newHttpJsonResponse(accountStatementJson);
+            auto response = drogon::HttpResponse::newHttpJsonResponse(accountStatementJson);
             response->setStatusCode(drogon::HttpStatusCode::k200OK);
+            callback(response);
         }
         else
         {
-            response = drogon::HttpResponse::newHttpResponse();
+            auto response = drogon::HttpResponse::newHttpResponse();
             response->setStatusCode(drogon::HttpStatusCode::k404NotFound);
+            callback(response);
         }
-        callback(response);
     }
 
 private:
@@ -95,15 +95,15 @@ private:
         return json;
     }
 
-    Json::Value accountStatementToJson(const AccountStatementPtr &accountStatement) const
+    Json::Value accountStatementToJson(const AccountStatement &accountStatement) const
     {
-        static const std::string dateTimeFormat = "%Y-%m-%dT%H:%M:%S.%iZ";
+        static const std::string dateTimeFormat = "%Y-%m-%dT%H:%M:%S.%FZ";
         auto now = Poco::Timestamp();
         Json::Value accountStatementJson;
-        accountStatementJson["saldo"]["total"] = accountStatement->balance.amount;
+        accountStatementJson["saldo"]["total"] = accountStatement.balance.amount;
         accountStatementJson["saldo"]["data_extrato"] = Poco::DateTimeFormatter::format(now, dateTimeFormat);
-        accountStatementJson["saldo"]["limite"] = accountStatement->balance.limit;
-        for (auto &transaction : (*accountStatement->latestTransactions))
+        accountStatementJson["saldo"]["limite"] = accountStatement.balance.limit;
+        for (auto &transaction : accountStatement.latestTransactions)
         {
             Json::Value transactionJson;
             transactionJson["valor"] = transaction.amount;
@@ -116,20 +116,19 @@ private:
         return accountStatementJson;
     }
 
-    Transaction jsonToTransaction(const std::shared_ptr<Json::Value>& jsonPtr) const
+    Transaction jsonToTransaction(const std::shared_ptr<Json::Value> &jsonPtr) const
     {
         auto jsonBody = (*jsonPtr);
-        auto transaction = Transaction {
+        auto transaction = Transaction{
             .amount = jsonBody["valor"].asInt(),
             .description = jsonBody["descricao"].asString(),
             .type = jsonBody["tipo"].asString(),
-            .createdAt = Poco::Timestamp()
-        };
+            .createdAt = Poco::Timestamp()};
 
         return transaction;
     }
 
-    Json::Value balanceToJson(const Balance& balance) const
+    Json::Value balanceToJson(const Balance &balance) const
     {
         Json::Value balanceJson;
         balanceJson["limite"] = balance.limit;
