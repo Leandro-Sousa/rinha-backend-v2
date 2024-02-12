@@ -12,10 +12,17 @@
 
 void initDatabase(const std::shared_ptr<Poco::Data::SessionPool> &sessionPool)
 {
-	auto databaseInitScriptPath = std::getenv("DATABASE_INIT_SCRIPT_PATH");
-	auto content = FileUtils::readAllText(databaseInitScriptPath);
-	auto session = sessionPool->get();
-	session << content, Poco::Data::Keywords::now;
+	try
+	{
+		auto databaseInitScriptPath = std::getenv("DATABASE_INIT_SCRIPT_PATH");
+		auto content = FileUtils::readAllText(databaseInitScriptPath);
+		auto session = sessionPool->get();
+		session << content, Poco::Data::Keywords::now;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Error on try create database: " << e.what() << std::endl;
+	}
 }
 
 int main(int argc, char *argv[])
