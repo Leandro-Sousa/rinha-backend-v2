@@ -2,7 +2,6 @@
 #include <memory>
 #include <drogon/drogon.h>
 
-#include <src/common/file_utils.cpp>
 #include <src/repositories/balance_repository.cpp>
 #include <src/repositories/transaction_repository.cpp>
 #include <src/services/checking_account_service.cpp>
@@ -22,7 +21,7 @@ int main(int argc, char *argv[])
 	drogon::app()
 		.setLogLevel(trantor::Logger::kInfo)
 		.addListener("0.0.0.0", port)
-		.setThreadNum(6)
+		.setThreadNum(10)
 		.registerController(std::make_shared<CustomersController>(checkingAccountService))
 		.run();
 }

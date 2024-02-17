@@ -22,6 +22,12 @@ public:
         this->_dbClientPtr->execSqlAsyncFuture(command, customerId, transaction.type, transaction.amount, transaction.description, transaction.createdAt).get();
     }
 
+    std::future<drogon::orm::Result> insert(std::int32_t customerId, const Transaction &transaction, std::shared_ptr<drogon::orm::Transaction> &databaseTransaction) const
+    {
+        static const std::string command = "INSERT INTO transactions(customer_id, \"type\", amount, description, created_at) VALUES($1, $2, $3, $4, $5);";
+        return databaseTransaction->execSqlAsyncFuture(command, customerId, transaction.type, transaction.amount, transaction.description, transaction.createdAt);
+    }
+
     TransactionList listLatestByCustomerId(std::int32_t customerId) const
     {
         static const std::string command = "SELECT \"type\", amount, description, created_at FROM transactions WHERE customer_id = $1 ORDER BY created_at DESC LIMIT 10;";

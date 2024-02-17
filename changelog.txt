@@ -1,1 +1,2 @@
-- Versão 1.8: Usar SQLite no modo sincrono.
+- Versão 2.0: Utilizando Postgres.
+- Versão 2.1: Utilizando Transações. P99 = 188ms. file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240217190036861/index.html
