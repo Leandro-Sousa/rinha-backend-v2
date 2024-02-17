@@ -129,6 +129,30 @@ rinha-backend/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/build
 .PHONY : rinha-backend/fast
 
+src/common/file_utils.o: src/common/file_utils.cpp.o
+.PHONY : src/common/file_utils.o
+
+# target to build an object file
+src/common/file_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o
+.PHONY : src/common/file_utils.cpp.o
+
+src/common/file_utils.i: src/common/file_utils.cpp.i
+.PHONY : src/common/file_utils.i
+
+# target to preprocess a source file
+src/common/file_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.i
+.PHONY : src/common/file_utils.cpp.i
+
+src/common/file_utils.s: src/common/file_utils.cpp.s
+.PHONY : src/common/file_utils.s
+
+# target to generate assembly for a file
+src/common/file_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.s
+.PHONY : src/common/file_utils.cpp.s
+
 src/common/result.o: src/common/result.cpp.o
 .PHONY : src/common/result.o
 
@@ -402,6 +426,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rinha-backend"
+	@echo "... src/common/file_utils.o"
+	@echo "... src/common/file_utils.i"
+	@echo "... src/common/file_utils.s"
 	@echo "... src/common/result.o"
 	@echo "... src/common/result.i"
 	@echo "... src/common/result.s"

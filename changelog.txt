@@ -1,0 +1,1 @@
+- Versão 1.8: Usar SQLite no modo sincrono.

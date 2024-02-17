@@ -4,14 +4,19 @@
 #include <string>
 #include <memory>
 #include <vector>
-#include <Poco/Timestamp.h>
 
-struct Transaction
+class Transaction
 {
+public:
     std::int32_t amount;
     std::string description;
     std::string type;
-    Poco::Timestamp createdAt;
+    std::int64_t createdAt;
+
+    Transaction(std::int32_t amount, const std::string& description, const std::string& type, std::int64_t createdAt)
+    : amount(amount), description(std::move(description)), type(std::move(type)), createdAt(createdAt)
+    {
+    }
 };
 
 using TransactionList = std::vector<Transaction>;

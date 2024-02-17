@@ -35,15 +35,14 @@ public:
 
     std::optional<AccountStatement> getAccountStatement(std::int32_t customerId) const
     {
-        auto balance = this->_balanceRepository.getByCustomerId(customerId);
-        if (!balance.has_value())
+        auto balanceOption = this->_balanceRepository.getByCustomerId(customerId);
+        if (!balanceOption.has_value())
         {
             return std::nullopt;
         }
-        auto accountStatement = AccountStatement();
-        accountStatement.balance = balance.value();
-        accountStatement.latestTransactions = this->_transactionRepository.getByCustomerId(customerId, 10);
-        return accountStatement;
+        const auto balance = balanceOption.value();
+        const auto latestTransactions = this->_transactionRepository.listLatestByCustomerId(customerId);
+        return AccountStatement(balance, latestTransactions);
     }
 
 private:

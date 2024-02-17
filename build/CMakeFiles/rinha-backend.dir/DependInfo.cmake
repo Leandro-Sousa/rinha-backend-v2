@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/leandro.sousa/dev/github/rinha-backend-v2/src/common/file_utils.cpp" "CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o" "gcc" "CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o.d"
   "/home/leandro.sousa/dev/github/rinha-backend-v2/src/common/result.cpp" "CMakeFiles/rinha-backend.dir/src/common/result.cpp.o" "gcc" "CMakeFiles/rinha-backend.dir/src/common/result.cpp.o.d"
   "/home/leandro.sousa/dev/github/rinha-backend-v2/src/controllers/customers_controller.cpp" "CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o" "gcc" "CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o.d"
   "/home/leandro.sousa/dev/github/rinha-backend-v2/src/main.cpp" "CMakeFiles/rinha-backend.dir/src/main.cpp.o" "gcc" "CMakeFiles/rinha-backend.dir/src/main.cpp.o.d"

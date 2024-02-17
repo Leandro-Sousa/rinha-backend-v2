@@ -293,18 +293,6 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
-//The directory containing a CMake configuration file for PocoDataSQLite.
-PocoDataSQLite_DIR:PATH=/usr/local/lib/cmake/Poco
-
-//The directory containing a CMake configuration file for PocoData.
-PocoData_DIR:PATH=/usr/local/lib/cmake/Poco
-
-//The directory containing a CMake configuration file for PocoFoundation.
-PocoFoundation_DIR:PATH=/usr/local/lib/cmake/Poco
-
-//The directory containing a CMake configuration file for Poco.
-Poco_DIR:PATH=/usr/local/lib/cmake/Poco
-
 //The Set the PostgreSQL_INCLUDE_DIR cmake cache entry to the top-level
 // directory containing the PostgreSQL include directories. E.g
 // /usr/local/include/PostgreSQL/8.4 or C:/Program Files/PostgreSQL/8.4/include

@@ -1,9 +1,9 @@
 #pragma once
 
+#include <coroutine>
 #include <cstdint>
 #include <vector>
-#include <Poco/Data/Session.h>
-#include <Poco/Data/SessionPool.h>
+#include <drogon/orm/DbClient.h>
 
 #include <src/common/result.cpp>
 #include <src/models/balance.cpp>
@@ -12,67 +12,35 @@
 class TransactionRepository
 {
 public:
-    TransactionRepository(const std::shared_ptr<Poco::Data::SessionPool> &sessionPool) : _sessionPool(sessionPool)
+    TransactionRepository(const drogon::orm::DbClientPtr &dbClientPtr) : _dbClientPtr(dbClientPtr)
     {
     }
 
     void insert(std::int32_t customerId, const Transaction &transaction) const
     {
-        auto session = this->_sessionPool->get();
-        insert(customerId, transaction, session);
+        static const std::string command = "INSERT INTO transactions(customer_id, \"type\", amount, description, created_at) VALUES($1, $2, $3, $4, $5);";
+        this->_dbClientPtr->execSqlAsyncFuture(command, customerId, transaction.type, transaction.amount, transaction.description, transaction.createdAt).get();
     }
 
-    void insert(std::int32_t customerId, const Transaction &transaction, Poco::Data::Session &session) const
+    TransactionList listLatestByCustomerId(std::int32_t customerId) const
     {
-        Poco::Data::Statement statement(session);
-        auto type = transaction.type;
-        auto amount = transaction.amount;
-        auto description = transaction.description;
-        std::int64_t createdAt = transaction.createdAt.epochMicroseconds();
-        statement << "INSERT INTO transactions VALUES(?, ?, ?, ?, ?);",
-            Poco::Data::Keywords::use(customerId),
-            Poco::Data::Keywords::use(type),
-            Poco::Data::Keywords::use(amount),
-            Poco::Data::Keywords::use(description),
-            Poco::Data::Keywords::use(createdAt),
-            Poco::Data::Keywords::now;
-    }
+        static const std::string command = "SELECT \"type\", amount, description, created_at FROM transactions WHERE customer_id = $1 ORDER BY created_at DESC LIMIT 10;";
+        const auto result = this->_dbClientPtr->execSqlAsyncFuture(command, customerId).get();
 
-    TransactionList getByCustomerId(std::int32_t customerId, int limit) const
-    {
-        auto result = std::vector<Transaction>();
-        auto session = this->_sessionPool->get();
-        Poco::Data::Statement statement(session);
-        std::string type;
-        std::int32_t amount;
-        std::string description;
-        std::int64_t createdAt;
-        statement << "SELECT \"type\", amount, description, created_at FROM transactions WHERE customer_id = ? ORDER BY created_at DESC LIMIT ?;",
-            Poco::Data::Keywords::into(type),
-            Poco::Data::Keywords::into(amount),
-            Poco::Data::Keywords::into(description),
-            Poco::Data::Keywords::into(createdAt),
-            Poco::Data::Keywords::use(customerId),
-            Poco::Data::Keywords::use(limit),
-            Poco::Data::Keywords::range(0, 1);
-
-        while (!statement.done())
+        auto transactions = std::vector<Transaction>();
+        for(const auto &row : result)
         {
-            auto rowCount = statement.execute();
-
-            if (rowCount > 0)
-            {
-                Transaction transaction{
-                    .amount = amount,
-                    .description = description,
-                    .type = type,
-                    .createdAt = createdAt};
-                result.push_back(transaction);
-            }
+            transactions.emplace_back(
+                row["amount"].as<std::int32_t>(),
+                row["description"].as<std::string>(),
+                row["type"].as<std::string>(),
+                row["created_at"].as<std::int64_t>()
+            );
         }
-        return result;
+
+        return transactions;
     }
 
 private:
-    std::shared_ptr<Poco::Data::SessionPool> _sessionPool;
+    drogon::orm::DbClientPtr _dbClientPtr;
 };

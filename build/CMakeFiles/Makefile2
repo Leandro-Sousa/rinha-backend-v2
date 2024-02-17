@@ -81,12 +81,12 @@ clean: CMakeFiles/rinha-backend.dir/clean
 CMakeFiles/rinha-backend.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rinha-backend.dir/build.make CMakeFiles/rinha-backend.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target rinha-backend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target rinha-backend"
 .PHONY : CMakeFiles/rinha-backend.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rinha-backend.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rinha-backend.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles 0
 .PHONY : CMakeFiles/rinha-backend.dir/rule

@@ -1,7 +1,7 @@
 #include <iostream>
+#include <chrono>
+#include <format>
 #include <drogon/HttpController.h>
-#include <Poco/DateTime.h>
-#include <Poco/Timestamp.h>
 
 #include <src/models/transaction.cpp>
 #include <src/validators/transaction_body_validator.cpp>
@@ -97,19 +97,20 @@ private:
 
     Json::Value accountStatementToJson(const AccountStatement &accountStatement) const
     {
-        static const std::string dateTimeFormat = "%Y-%m-%dT%H:%M:%S.%FZ";
-        auto now = Poco::Timestamp();
+        const auto now = std::chrono::utc_clock::now();
         Json::Value accountStatementJson;
         accountStatementJson["saldo"]["total"] = accountStatement.balance.amount;
-        accountStatementJson["saldo"]["data_extrato"] = Poco::DateTimeFormatter::format(now, dateTimeFormat);
+        accountStatementJson["saldo"]["data_extrato"] = std::format("{0:%F}T{0:%T}Z", now);
         accountStatementJson["saldo"]["limite"] = accountStatement.balance.limit;
         for (auto &transaction : accountStatement.latestTransactions)
         {
+            std::chrono::microseconds microseconds(transaction.createdAt);
+            std::chrono::time_point<std::chrono::utc_clock> dt(microseconds);
             Json::Value transactionJson;
             transactionJson["valor"] = transaction.amount;
             transactionJson["tipo"] = transaction.type;
             transactionJson["descricao"] = transaction.description;
-            transactionJson["realizada_em"] = Poco::DateTimeFormatter::format(transaction.createdAt, dateTimeFormat);
+            transactionJson["realizada_em"] = std::format("{0:%F}T{0:%T}Z", dt);
             accountStatementJson["ultimas_transacoes"].append(transactionJson);
         }
 
@@ -118,12 +119,15 @@ private:
 
     Transaction jsonToTransaction(const std::shared_ptr<Json::Value> &jsonPtr) const
     {
-        auto jsonBody = (*jsonPtr);
-        auto transaction = Transaction{
-            .amount = jsonBody["valor"].asInt(),
-            .description = jsonBody["descricao"].asString(),
-            .type = jsonBody["tipo"].asString(),
-            .createdAt = Poco::Timestamp()};
+        const auto jsonBody = (*jsonPtr);
+        const auto now = std::chrono::utc_clock::now();
+        const auto nowInMicroSeconds = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch());
+        auto transaction = Transaction(
+            static_cast<std::int32_t>(jsonBody["valor"].asInt()),
+            static_cast<std::string>(jsonBody["descricao"].asString()),
+            static_cast<std::string>(jsonBody["tipo"].asString()),
+            nowInMicroSeconds.count()
+        );
 
         return transaction;
     }

@@ -24,10 +24,7 @@ add_executable(${PROJECT_NAME}
                src/controllers/customers_controller.cpp
                src/main.cpp)
 
+find_package(PostgreSQL REQUIRED)
 find_package(Drogon REQUIRED)
-find_package(Poco REQUIRED COMPONENTS Foundation Data DataSQLite)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon
-                                              Poco::Foundation
-                                              Poco::Data
-                                              Poco::DataSQLite)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon INTERFACE PostgreSQL::PostgreSQL)

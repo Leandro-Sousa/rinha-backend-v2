@@ -6,8 +6,15 @@
 #include "balance.cpp"
 #include "transaction.cpp"
 
-struct AccountStatement
+class AccountStatement
 {
+public:
     Balance balance;
     TransactionList latestTransactions;
+
+    AccountStatement(const Balance &balance, const TransactionList &latestTransactions)
+    : balance(std::move(balance)), latestTransactions(std::move(latestTransactions))
+    {
+
+    }
 };

@@ -69,10 +69,24 @@ include CMakeFiles/rinha-backend.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rinha-backend.dir/flags.make
 
+CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
+CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/file_utils.cpp
+CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o -MF CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/file_utils.cpp
+
+CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/file_utils.cpp > CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.i
+
+CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/file_utils.cpp -o CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.s
+
 CMakeFiles/rinha-backend.dir/src/common/result.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/common/result.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/result.cpp
 CMakeFiles/rinha-backend.dir/src/common/result.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rinha-backend.dir/src/common/result.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rinha-backend.dir/src/common/result.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/common/result.cpp.o -MF CMakeFiles/rinha-backend.dir/src/common/result.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/common/result.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/common/result.cpp
 
 CMakeFiles/rinha-backend.dir/src/common/result.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/rinha-backend.dir/src/common/result.cpp.s: cmake_force
 CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/account_statement.cpp
 CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o -MF CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/account_statement.cpp
 
 CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.s: cmake_force
 CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/balance.cpp
 CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o -MF CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/balance.cpp
 
 CMakeFiles/rinha-backend.dir/src/models/balance.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/rinha-backend.dir/src/models/balance.cpp.s: cmake_force
 CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/transaction.cpp
 CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o -MF CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/models/transaction.cpp
 
 CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/rinha-backend.dir/src/models/transaction.cpp.s: cmake_force
 CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/validators/validation_result.cpp
 CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o -MF CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/validators/validation_result.cpp
 
 CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/rinha-backend.dir/src/validators/validation_result.cpp.s: cmake_force
 CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/validators/transaction_body_validator.cpp
 CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o -MF CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/validators/transaction_body_validator.cpp
 
 CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/rinha-backend.dir/src/validators/transaction_body_validator.cpp.s: cm
 CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/repositories/balance_repository.cpp
 CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o -MF CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/repositories/balance_repository.cpp
 
 CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/rinha-backend.dir/src/repositories/balance_repository.cpp.s: cmake_fo
 CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/repositories/transaction_repository.cpp
 CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o -MF CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/repositories/transaction_repository.cpp
 
 CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/rinha-backend.dir/src/repositories/transaction_repository.cpp.s: cmak
 CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/services/checking_account_service.cpp
 CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o -MF CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/services/checking_account_service.cpp
 
 CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/rinha-backend.dir/src/services/checking_account_service.cpp.s: cmake_
 CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/controllers/customers_controller.cpp
 CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o -MF CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/controllers/customers_controller.cpp
 
 CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.s: cmake_f
 CMakeFiles/rinha-backend.dir/src/main.cpp.o: CMakeFiles/rinha-backend.dir/flags.make
 CMakeFiles/rinha-backend.dir/src/main.cpp.o: /home/leandro.sousa/dev/github/rinha-backend-v2/src/main.cpp
 CMakeFiles/rinha-backend.dir/src/main.cpp.o: CMakeFiles/rinha-backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rinha-backend.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rinha-backend.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rinha-backend.dir/src/main.cpp.o -MF CMakeFiles/rinha-backend.dir/src/main.cpp.o.d -o CMakeFiles/rinha-backend.dir/src/main.cpp.o -c /home/leandro.sousa/dev/github/rinha-backend-v2/src/main.cpp
 
 CMakeFiles/rinha-backend.dir/src/main.cpp.i: cmake_force
@@ -225,6 +239,7 @@ CMakeFiles/rinha-backend.dir/src/main.cpp.s: cmake_force
 
 # Object files for target rinha-backend
 rinha__backend_OBJECTS = \
+"CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o" \
 "CMakeFiles/rinha-backend.dir/src/common/result.cpp.o" \
 "CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o" \
 "CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o" \
@@ -240,6 +255,7 @@ rinha__backend_OBJECTS = \
 # External object files for target rinha-backend
 rinha__backend_EXTERNAL_OBJECTS =
 
+rinha-backend: CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o
 rinha-backend: CMakeFiles/rinha-backend.dir/src/common/result.cpp.o
 rinha-backend: CMakeFiles/rinha-backend.dir/src/models/account_statement.cpp.o
 rinha-backend: CMakeFiles/rinha-backend.dir/src/models/balance.cpp.o
@@ -253,7 +269,6 @@ rinha-backend: CMakeFiles/rinha-backend.dir/src/controllers/customers_controller
 rinha-backend: CMakeFiles/rinha-backend.dir/src/main.cpp.o
 rinha-backend: CMakeFiles/rinha-backend.dir/build.make
 rinha-backend: /usr/local/lib/libdrogon.a
-rinha-backend: /usr/local/lib/libPocoDataSQLite.so.93
 rinha-backend: /usr/local/lib/libtrantor.a
 rinha-backend: /usr/lib/libssl.so
 rinha-backend: /usr/lib/libcrypto.so
@@ -267,10 +282,8 @@ rinha-backend: /usr/lib/libpq.so
 rinha-backend: /usr/lib/libmysqlclient_r.so
 rinha-backend: /usr/lib/libsqlite3.so
 rinha-backend: /usr/lib/libz.so
-rinha-backend: /usr/local/lib/libPocoData.so.93
-rinha-backend: /usr/local/lib/libPocoFoundation.so.93
 rinha-backend: CMakeFiles/rinha-backend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable rinha-backend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leandro.sousa/dev/github/rinha-backend-v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable rinha-backend"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rinha-backend.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o"
+  "CMakeFiles/rinha-backend.dir/src/common/file_utils.cpp.o.d"
   "CMakeFiles/rinha-backend.dir/src/common/result.cpp.o"
   "CMakeFiles/rinha-backend.dir/src/common/result.cpp.o.d"
   "CMakeFiles/rinha-backend.dir/src/controllers/customers_controller.cpp.o"
