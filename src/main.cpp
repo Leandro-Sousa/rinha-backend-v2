@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	drogon::app()
 		.setLogLevel(trantor::Logger::kInfo)
 		.addListener("0.0.0.0", port)
-		.setThreadNum(10)
+		.setThreadNum(8)
 		.registerController(std::make_shared<CustomersController>(checkingAccountService))
 		.run();
 }

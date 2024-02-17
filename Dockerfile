@@ -1,4 +1,4 @@
-FROM leandro-sousa/drogon:latest
+FROM public.ecr.aws/v6n3t6k2/drogon:latest
 
 WORKDIR /app
 
