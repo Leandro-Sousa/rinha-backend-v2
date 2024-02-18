@@ -12,16 +12,9 @@
 
 void createDatabase(const std::shared_ptr<Poco::Data::SessionPool> &sessionPool)
 {
-	try
-	{
-		const auto content = FileUtils::readAllAsText("./init.sql");
-		auto session = sessionPool->get();
-		session << content, Poco::Data::Keywords::now;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	const auto content = FileUtils::readAllAsText("./init.sql");
+	auto session = sessionPool->get();
+	session << content, Poco::Data::Keywords::now;
 }
 
 bool shouldCreateDatabase(int argc, char *argv[])
