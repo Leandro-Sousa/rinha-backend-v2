@@ -1,2 +1,3 @@
-- Versão 1.0: P99 = 14ms, file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218154850091/index.html
-- Versão 1.1: Inclui opção synchronous=normal ao SQLIte3. P99 = 7ms, file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218160440583/index.html
+- Versão 1.0: P99=14ms, MaxResp=347ms, file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218154850091/index.html
+- Versão 1.1: Inclui opção synchronous=normal ao SQLIte3. P99=7ms, MaxResp=158ms file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218160440583/index.html
+- Versão 1.2: Inclui opção synchronous=off ao SQLIte3. P99=6ms, MaxResp=85ms, file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218161830749/index.html
