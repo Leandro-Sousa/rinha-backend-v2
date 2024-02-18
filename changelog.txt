@@ -1,4 +1,1 @@
-- Versão 2.0: Utilizando Postgres.
-- Versão 2.1: Utilizando Transações. P99 = 188ms. file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240217190036861/index.html
-- Versão 2.2: Remove transações e faz controle de concorrência manualmente. P99 = 185ms. file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240217192432515/index.html
-- Versão 2.3: Ajuste de CPU e memória. P99 = 44ms. file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240217194103290/index.html
+- Versão 1.0: P99 = 14ms, file:///home/leandro.sousa/dev/github/rinha-de-backend-2024-q1/load-test/user-files/results/rinhabackendcrebitossimulation-20240218154850091/index.html
