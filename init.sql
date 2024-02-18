@@ -1,4 +1,5 @@
 PRAGMA journal_mode=WAL;
+PRAGMA synchronous=normal;
 
 CREATE TABLE IF NOT EXISTS customers
 (
