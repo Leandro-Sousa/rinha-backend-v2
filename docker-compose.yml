@@ -1,42 +1,27 @@
 version: "3.9"
 
 services:
-  db:
-    image: postgres:latest
-    expose: 
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=rinha_backend
-      - POSTGRES_DB=rinha_backend
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    hostname: db
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: '380MB'
-
   service-01: &service
     image: leandro-sousa/rinha-backend-v2:latest
     environment:
       - APP_PORT=8000
-      - DATABASE_CONNECTION_STRING=host=db port=5432 dbname=rinha_backend user=rinha_backend password=password
+      - DATABASE_PATH=/var/database/rinha-backend.db
     expose:
       - "8000:8000"
     hostname: service-01
-    depends_on:
-      - db
+    command: --create-database
+    volumes:
+      - database:/var/database
     deploy:
       resources:
         limits:
-          cpus: '0.2'
-          memory: '60MB'
+          cpus: '0.7'
+          memory: '100MB'
 
   service-02:
     <<: *service
     hostname: service-02
+    command: ---no-create-database
 
   load-balancer:
     image: haproxy:alpine
@@ -52,8 +37,11 @@ services:
       resources:
         limits:
           cpus: '0.1'
-          memory: '50MB'
+          memory: '100MB'
 
 networks:
   default:
     driver: bridge
+
+volumes:
+  database:

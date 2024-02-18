@@ -34,34 +34,6 @@ public:
         return result;
     }
 
-    // const Result<Balance> registerTransaction(std::int32_t customerId, const Transaction &transaction) const
-    // {
-    //     auto currentBalanceOption = this->_balanceRepository.getByCustomerIdForUpdate(customerId, dbTransaction);
-
-    //     if (!currentBalanceOption.has_value())
-    //     {
-    //         dbTransaction->rollback();
-    //         return Result<Balance>::fail("BALANCE_NOT_FOUND", TransactionErrors::BALANCE_NOT_FOUND);
-    //     }
-
-    //     auto currentBalance = currentBalanceOption.value();
-    //     auto transactionAmount = this->getTransactionAmountWithSign(transaction);
-    //     std::int32_t newBalance = (currentBalance.amount + transactionAmount);
-
-    //     if ((newBalance + currentBalance.limit) < 0)
-    //     {
-    //         dbTransaction->rollback();
-    //         return Result<Balance>::fail("INSUFFICIENT_FUNDS", TransactionErrors::INSUFFICIENT_FUNDS);
-    //     }
-
-    //     this->_balanceRepository.update(customerId, newBalance, dbTransaction).wait();
-    //     this->_transactionRepository.insert(customerId, transaction, dbTransaction).wait();
-        
-    //     currentBalance.amount = newBalance;
-
-    //     return Result<Balance>::success(currentBalance);
-    // }
-
     std::optional<AccountStatement> getAccountStatement(std::int32_t customerId) const
     {
         const auto balanceOption = this->_balanceRepository.getByCustomerId(customerId);

@@ -12,6 +12,7 @@ include_directories(include ${PROJECT_SOURCE_DIR})
 
 add_executable(${PROJECT_NAME} 
                src/common/result.cpp
+               src/common/file_utils.cpp
                src/models/account_statement.cpp
                src/models/balance.cpp
                src/models/transaction.cpp               
@@ -23,7 +24,10 @@ add_executable(${PROJECT_NAME}
                src/controllers/customers_controller.cpp
                src/main.cpp)
 
-find_package(PostgreSQL REQUIRED)
 find_package(Drogon REQUIRED)
+find_package(Poco REQUIRED COMPONENTS Foundation Data DataSQLite)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon INTERFACE PostgreSQL::PostgreSQL)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon
+                                      PRIVATE Poco::Foundation 
+                                      PRIVATE Poco::Data 
+                                      PRIVATE Poco::DataSQLite)

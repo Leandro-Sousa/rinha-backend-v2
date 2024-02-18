@@ -1,7 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <drogon/orm/DbClient.h>
+#include <Poco/Data/Session.h>
+#include <Poco/Data/SessionPool.h>
 
 #include <src/common/result.cpp>
 #include <src/models/balance.cpp>
@@ -9,36 +10,27 @@
 class BalanceRepository
 {
 public:
-    BalanceRepository(const drogon::orm::DbClientPtr &dbClientPtr) : _dbClientPtr(dbClientPtr)
+    BalanceRepository(const std::shared_ptr<Poco::Data::SessionPool> &sessionPool) : _sessionPool(sessionPool)
     {
-    }
-
-    std::shared_ptr<drogon::orm::Transaction> newTransaction() const
-    {
-        return this->_dbClientPtr->newTransaction();
     }
 
     std::optional<Balance> getByCustomerId(std::int32_t customerId) const
     {
-        static const std::string command = "SELECT \"limit\", amount FROM balances WHERE customer_id = $1;";
-        const auto result = this->_dbClientPtr->execSqlSync(command, customerId);
-        if(!result.empty())
-        {
-            const auto row = result[0];
-            return Balance(row["limit"].as<std::int32_t>(), row["amount"].as<std::int32_t>());
-        }
-     
-        return std::nullopt;
-    }
+        static const std::string command = "SELECT \"limit\", amount FROM balances WHERE customer_id = ?;";
+        auto session = this->_sessionPool->get();
+        std::int32_t limit;
+        std::int32_t amount;
+        auto statement = (session << command, 
+                                     Poco::Data::Keywords::into(limit), 
+                                     Poco::Data::Keywords::into(amount), 
+                                     Poco::Data::Keywords::use(customerId),
+                                     Poco::Data::Keywords::range(0, 1));
 
-    std::optional<Balance> getByCustomerIdForUpdate(std::int32_t customerId, std::shared_ptr<drogon::orm::Transaction> &databaseTransaction) const
-    {
-        static const std::string command = "SELECT \"limit\", amount FROM balances WHERE customer_id = $1 FOR UPDATE;";
-        const auto result = databaseTransaction->execSqlAsyncFuture(command, customerId).get();
-        if(!result.empty())
+        const auto rowCount = statement.execute();
+
+        if(rowCount == 1)
         {
-            const auto row = result[0];
-            return Balance(row["limit"].as<std::int32_t>(), row["amount"].as<std::int32_t>());
+            return Balance(limit, amount);
         }
      
         return std::nullopt;
@@ -46,17 +38,18 @@ public:
 
     bool update(std::int32_t customerId, std::int32_t currentBalance, std::int32_t newBalance) const
     {
-        static const std::string command = "UPDATE balances SET amount = $1 WHERE customer_id = $2 AND amount = $3;";
-        const auto result = this->_dbClientPtr->execSqlAsyncFuture(command, newBalance, customerId, currentBalance).get();
-        return (result.affectedRows() == 1);
-    }
+        static const std::string command = "UPDATE balances SET amount = ? WHERE customer_id = ? AND amount = ?;";
+        auto session = this->_sessionPool->get();
+        auto statement = (session << command, 
+                                     Poco::Data::Keywords::use(newBalance), 
+                                     Poco::Data::Keywords::use(customerId), 
+                                     Poco::Data::Keywords::use(currentBalance));
 
-    std::future<drogon::orm::Result> update(std::int32_t customerId, std::int32_t newBalance, std::shared_ptr<drogon::orm::Transaction> &databaseTransaction) const
-    {
-        static const std::string command = "UPDATE balances SET amount = $1 WHERE customer_id = $2;";
-        return databaseTransaction->execSqlAsyncFuture(command, newBalance, customerId);
+        const auto rowCount = statement.execute();
+
+        return (rowCount == 1);
     }
 
 private:
-    drogon::orm::DbClientPtr _dbClientPtr;
+    const std::shared_ptr<Poco::Data::SessionPool> _sessionPool;
 };
