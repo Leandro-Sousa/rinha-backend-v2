@@ -6,7 +6,7 @@ project(rinha-backend VERSION 1.0
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -O3")
+set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra")
 
 include_directories(include ${PROJECT_SOURCE_DIR})
 
