@@ -24,7 +24,7 @@ RUN git clone https://github.com/drogonframework/drogon && \
     git submodule update --init && \
     ./build.sh
 
-RUN git clone -b poco-1.11.8-release --single-branch https://github.com/pocoproject/poco.git && \ 
+RUN git clone https://github.com/pocoproject/poco.git && \ 
     cd poco && \ 
     mkdir cmake-build && \ 
     cd cmake-build && \ 

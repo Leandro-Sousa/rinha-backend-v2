@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
 	const auto sessionPool = std::make_shared<Poco::Data::SessionPool>(
 		Poco::Data::SQLite::Connector::KEY, 
 		std::getenv("DATABASE_PATH"),
-		8,
-		64
+		32,
+		256
 	);
 
 	if(shouldCreateDatabase(argc, argv))

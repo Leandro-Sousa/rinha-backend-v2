@@ -1,5 +1,6 @@
 PRAGMA journal_mode=WAL;
 PRAGMA synchronous=OFF;
+PRAGMA temp_store=MEMORY;
 
 CREATE TABLE IF NOT EXISTS customers
 (
